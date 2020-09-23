@@ -3,11 +3,11 @@ import React, { useState, useContext, useMemo } from "react";
 const getClassName = (baseName, isSelected) =>
   (isSelected ? [baseName].concat("selected") : [baseName]).join(" ");
 
-const Tab = ({ onClick, children, isSelected, disabled = false}) => {
+const Tab = ({ onClick, children, isSelected, diasbled = false}) => {
   const className = getClassName("tab-list-item", isSelected);
-  const style = disabled  ? { color: '#ccc'} : {}
+  const style = diasbled  ? { color: '#ccc'} : {}
   return (
-    <div className={className} style={style} onClick={ !disabled && onClick}>
+    <div className={className} style={style}onClick={ !diasbled && onClick}>
       {children}
     </div>
   );
@@ -77,7 +77,7 @@ export const Tab102 = () => {
     <Tabs defaultIndex={1} forceRender={true}>
       <TabList>
         <Tab>tab0</Tab>
-        <Tab disabled>tab1</Tab>
+        <Tab diasbled>tab1</Tab>
         <CoolTab>tab2</CoolTab>
       </TabList>
       <TabPanels>
